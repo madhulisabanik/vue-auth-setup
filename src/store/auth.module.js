@@ -38,6 +38,11 @@ export const auth = {
       );
     }
   },
+  getters: {
+    currentUser(state) {
+      return state.user.user;
+    }
+  },
   mutations: {
     loginSuccess(state, user) {
       state.status.loggedIn = true;

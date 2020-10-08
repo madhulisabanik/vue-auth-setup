@@ -2,35 +2,36 @@
   <div class="container">
     <header class="jumbotron">
       <h3>
-        Welcome, <strong>{{currentUser.user.name}}</strong>!
+        Welcome, <strong>{{currentUser.name}}</strong>!
       </h3>
     </header> 
     <p>
       <strong>Id:</strong>
-      {{currentUser.user.id}}
+      {{currentUser.id}}
     </p> 
     <p>
       <strong>Email:</strong>
-      {{currentUser.user.email}}
+      {{currentUser.email}}
     </p>
     <p>
       <strong>Phone No:</strong>
-      {{currentUser.user.phone_number}}
+      {{currentUser.phone_number}}
     </p>
     <p>
       <strong>Address:</strong>
-      {{currentUser.user.address}}
+      {{currentUser.address}}
     </p>
   </div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   export default {
     name: 'Profile',
     computed: {
-      currentUser() {
-        return this.$store.state.auth.user;
-      }
+      ...mapGetters({
+        currentUser: 'auth/currentUser'
+      })
     },
     mounted() {
       if (!this.currentUser) {
